@@ -55,7 +55,10 @@ public class MainActivity extends AppCompatActivity implements FriendAdapter.OnF
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mFriendAdapter = new FriendAdapter(new ArrayList<Friend>(), this);
         mRecyclerView.setAdapter(mFriendAdapter);
+
         select(projections, null, null, sortOrder);
+
+
         mFriendAdapter.addList(mFriendList);
 
         edtSearch.addTextChangedListener(new TextWatcher() {
@@ -152,6 +155,10 @@ public class MainActivity extends AppCompatActivity implements FriendAdapter.OnF
         Log.d(TAG, "onClick: friend " + friend.toString());
     }
 }
+//
+//    add(new Friend("0", "Ariel Austria", 28, "Male", "0996565565", "yel@gmail.com"));
+//        add(new Friend("0", "Faru Manalili", 5, "Male", "0996514151", "ru@gmail.com"));
+//        add(new Friend("0", "Fiara Manalili", 7, "Female", "0996523482", "fiara@gmail.com"));
 //        add(new Friend("0", "Ariel Austria", 28, "Male", "0996565565", "yel@gmail.com"));
 ////        add(new Friend("0", "Faru Manalili", 5, "Male", "0996514151", "ru@gmail.com"));
 ////        update(new Friend("0", "Fiara Benienne Manalili", 7, "Female", "0996542416", "yen@gmail.com"),

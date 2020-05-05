@@ -6,10 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.austria.developer.friends.R;
 import com.austria.developer.friends.model.Friend;
+import com.austria.developer.friends.util.FriendsDiffUtility;
 
 import java.util.List;
 
@@ -72,8 +74,14 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     }
 
     public void addList(List<Friend> friends) {
-        mFriendList = friends;
-        notifyDataSetChanged();
+
+        FriendsDiffUtility utility = new FriendsDiffUtility(mFriendList, friends);
+        DiffUtil.DiffResult result = DiffUtil.calculateDiff(utility);
+
+        mFriendList.clear();
+        mFriendList.addAll(friends);
+        result.dispatchUpdatesTo(this);
+
     }
 
 }
